@@ -2,7 +2,7 @@
 説明
 
 ## 画面比周り備忘録
-- 「カメラ」
+- カメラ
   - Projection`Orthographic`
   - Size`5`
 
