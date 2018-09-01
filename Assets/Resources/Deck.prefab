@@ -53,6 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224514867917717940}
+  - component: {fileID: 114453153173673606}
   m_Layer: 5
   m_Name: Deck
   m_TagString: Untagged
@@ -60,6 +61,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114453153173673606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849647340189224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed6f739103aa924094dd0e79cf0cc98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114617992923730934
 MonoBehaviour:
   m_ObjectHideFlags: 1
