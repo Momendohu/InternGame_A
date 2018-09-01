@@ -35,8 +35,8 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-# External resources directory
-Assets/External/
+# External resources directory (ABO)
+Assets/ABO/External/
 
 # Standard assets directory
 Assets/Standard Assets/
