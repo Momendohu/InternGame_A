@@ -44,3 +44,6 @@ TagManager:
   - name: Background
     uniqueID: 3799672135
     locked: 0
+  - name: Deck
+    uniqueID: 97882541
+    locked: 0
