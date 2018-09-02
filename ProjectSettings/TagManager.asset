@@ -41,12 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
+  - name: BackgroundUnder
     uniqueID: 3799672135
-    locked: 0
-  - name: Deck
-    uniqueID: 97882541
     locked: 0
   - name: Panel
     uniqueID: 3558021567
+    locked: 0
+  - name: BackgroundUpper
+    uniqueID: 2927862287
+    locked: 0
+  - name: Deck
+    uniqueID: 97882541
     locked: 0
