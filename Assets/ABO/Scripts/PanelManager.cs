@@ -14,6 +14,7 @@ public class PanelManager : MonoBehaviour {
 
     //=============================================================
     public enum EState { off = 0, on = 1 } //状態
+    public enum Form { L = 0, O = 1 } //形
 
     //=============================================================
     private GameObject panel; //パネル
@@ -56,7 +57,7 @@ public class PanelManager : MonoBehaviour {
                     obj.GetComponent<Panel>().State = EState.on;
                 }
 
-                Debug.Log(i+":"+j);
+                Debug.Log(i + ":" + j);
             }
         }
     }
