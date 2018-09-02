@@ -9,8 +9,7 @@ public class Panel : MonoBehaviour {
     private Color offColor = new Color(255f / 255f,236f / 255f,185f / 255f);
 
     //=============================================================
-    [System.NonSerialized]
-    public PanelManager.EState State = PanelManager.EState.off; //状態
+    private PanelManager.EState state = PanelManager.EState.off; //状態
 
     //=============================================================
     private SpriteRenderer spriteRenderer;
@@ -35,7 +34,7 @@ public class Panel : MonoBehaviour {
     }
 
     private void Update () {
-        switch(State) {
+        switch(state) {
             case PanelManager.EState.off:
             spriteRenderer.color = offColor;
             break;
@@ -47,5 +46,11 @@ public class Panel : MonoBehaviour {
             default:
             break;
         }
+    }
+
+    //=============================================================
+    //stateを変える
+    public void ChangeState (PanelManager.EState _state) {
+        state = _state;
     }
 }

@@ -35,7 +35,7 @@ public class PanelManager : MonoBehaviour {
     }
 
     private void Start () {
-        CreatePanels(panelNumX,panelNumY,Form.L);
+        CreatePanels(panelNumX,panelNumY,Form.O);
     }
 
     private void Update () {
@@ -57,11 +57,14 @@ public class PanelManager : MonoBehaviour {
                 switch(form) {
                     case Form.L:
                     if(TermsL(i - (int)(numX / 2),j - (int)(numY / 2))) {
-                        obj.GetComponent<Panel>().State = EState.on;
+                        obj.GetComponent<Panel>().ChangeState(EState.on);
                     }
                     break;
 
                     case Form.O:
+                    if(TermsO(i - (int)(numX / 2),j - (int)(numY / 2))) {
+                        obj.GetComponent<Panel>().ChangeState(EState.on);
+                    }
                     break;
                 }
 
@@ -86,6 +89,28 @@ public class PanelManager : MonoBehaviour {
         }
 
         if(numX == 1 && numY == 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    //=============================================================
+    //O型の条件
+    private bool TermsO (int numX,int numY) {
+        if(numX == 0 && numY == 0) {
+            return true;
+        }
+
+        if(numX == 0 && numY == 1) {
+            return true;
+        }
+
+        if(numX == 1 && numY == 0) {
+            return true;
+        }
+
+        if(numX == 1 && numY == 1) {
             return true;
         }
 
