@@ -47,3 +47,6 @@ TagManager:
   - name: Deck
     uniqueID: 97882541
     locked: 0
+  - name: Panel
+    uniqueID: 3558021567
+    locked: 0
