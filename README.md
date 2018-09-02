@@ -9,6 +9,8 @@
 - SortingLayer設定
   - `Background`
   - `Deck`
+- Canvas設定
+  - ReferenceResolution`900x1600`
 
 ## Resources
 1. [タイトル](リンク)
