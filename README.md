@@ -9,6 +9,7 @@
 - SortingLayer設定
   - `Background`
   - `Deck`
+  - `Panel` 
 - Canvas設定
   - ReferenceResolution`900x1600`
 
