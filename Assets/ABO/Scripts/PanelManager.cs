@@ -35,7 +35,7 @@ public class PanelManager : MonoBehaviour {
     }
 
     private void Start () {
-        CreatePanels(panelNumX,panelNumY);
+        CreatePanels(panelNumX,panelNumY,Form.L);
     }
 
     private void Update () {
@@ -46,19 +46,49 @@ public class PanelManager : MonoBehaviour {
     //パネルの生成
     //numX:横の数
     //numY:縦の数
-    private void CreatePanels (int numX,int numY) {
+    private void CreatePanels (int numX,int numY,Form form) {
         GameObject obj = null;
 
         for(int i = 0;i < numX;i++) {
             for(int j = 0;j < numY;j++) {
                 obj = Instantiate(panel) as GameObject;
-                obj.transform.position = new Vector2((panelSize + panelGap) * (i - numX / 2) + panelX,(panelSize + panelGap) * (j - numY / 2) + panelY);
-                if(i == 2) {
-                    obj.GetComponent<Panel>().State = EState.on;
+                obj.transform.position = new Vector2((panelSize + panelGap) * (i - (int)(numX / 2)) + panelX,(panelSize + panelGap) * (j - (int)(numY / 2)) + panelY);
+
+                switch(form) {
+                    case Form.L:
+                    if(TermsL(i - (int)(numX / 2),j - (int)(numY / 2))) {
+                        obj.GetComponent<Panel>().State = EState.on;
+                    }
+                    break;
+
+                    case Form.O:
+                    break;
                 }
 
                 Debug.Log(i + ":" + j);
             }
         }
+    }
+
+    //=============================================================
+    //L型の条件
+    private bool TermsL (int numX,int numY) {
+        if(numX == -1 && numY == 0) {
+            return true;
+        }
+
+        if(numX == -1 && numY == 1) {
+            return true;
+        }
+
+        if(numX == 0 && numY == 0) {
+            return true;
+        }
+
+        if(numX == 1 && numY == 0) {
+            return true;
+        }
+
+        return false;
     }
 }
