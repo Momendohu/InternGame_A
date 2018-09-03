@@ -74,9 +74,26 @@ public class Panel : MonoBehaviour {
     }
 
     //=============================================================
+    //タッチされた時の処理
+    public void Touched (PanelManager.EState _state) {
+        PanelManager p = transform.parent.GetComponent<PanelManager>();
+        p.TouchedPanelCoordinate[p.TouchedPanelCoordinatePoint] = new Vector2(this.Px,this.Py); //座標を保存
+        p.TouchedPanelCoordinatePoint++; //保存を次に進める
+
+        Debug.Log("px:" + this.Px + " py:" + this.Py + " next is " + p.TouchedPanelCoordinatePoint);
+        this.ChangeState(_state);
+    }
+
+    //=============================================================
     //stateを変える
     public void ChangeState (PanelManager.EState _state) {
         state = _state;
+    }
+
+    //=============================================================
+    //stateを取得する
+    public PanelManager.EState GetState () {
+        return state;
     }
 
     //=============================================================
@@ -87,7 +104,7 @@ public class Panel : MonoBehaviour {
 
     //=============================================================
     //=============================================================
-    internal void ChangeState () {
+    /*internal void ChangeState () {
         throw new NotImplementedException();
-    }
+    }*/
 }

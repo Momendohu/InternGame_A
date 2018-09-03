@@ -12,6 +12,12 @@ public class PanelManager : MonoBehaviour {
     private float panelSize = 0.75f; //パネルのサイズ
     private float panelGap = 0.015f; //パネル間のすきま
 
+    private int touchedPanelCoordinateNum; //タッチしているパネルの座標の保存しておく数
+
+    //=============================================================
+    public Vector2[] TouchedPanelCoordinate; //タッチしているパネルの座標
+    public int TouchedPanelCoordinatePoint; //タッチしているパネルの座標の現在の参照先
+
     //=============================================================
     public enum EState { None = -1, Off = 0, On = 1 } //状態
     public enum Form { None = -1, L = 0, O = 1 } //形
@@ -23,6 +29,9 @@ public class PanelManager : MonoBehaviour {
     //=============================================================
     private void Init () {
         CRef();
+
+        touchedPanelCoordinateNum = panelNumX * panelNumY;
+        TouchedPanelCoordinate = new Vector2[touchedPanelCoordinateNum];
     }
 
     //=============================================================

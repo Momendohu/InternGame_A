@@ -42,7 +42,10 @@ public class Mouse : MonoBehaviour {
         if(TapFlag)
             //配置ブロックの色を変える
             if(other.tag == "Panel") {
-                other.gameObject.GetComponent<Panel>().ChangeState(PanelManager.EState.On);
+                //offなら
+                if(other.GetComponent<Panel>().GetState() == PanelManager.EState.Off) {
+                    other.GetComponent<Panel>().Touched(PanelManager.EState.On);
+                }
             }
     }
 }
