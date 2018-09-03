@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 1907627610}
   - component: {fileID: 1907627609}
   m_Layer: 0
-  m_Name: PanelMamager
+  m_Name: PanelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

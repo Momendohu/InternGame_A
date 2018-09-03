@@ -93,7 +93,7 @@ public class Panel : MonoBehaviour {
 
         p.ChainNum++; //チェインを次に進める
 
-        Debug.Log("px:" + this.Px + " py:" + this.Py + " next is " + p.ChainNum);
+        //Debug.Log("px:" + this.Px + " py:" + this.Py + " next is " + p.ChainNum);
         this.ChangeState(_state);
     }
 

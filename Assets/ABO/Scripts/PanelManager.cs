@@ -58,8 +58,12 @@ public class PanelManager : MonoBehaviour {
 
     //=============================================================
     //スタートからゴールの距離
-    public int StartToGoal () {
-        return Mathf.Abs(ChainInfo[0].x - ChainInfo[ChainNum].x) + Mathf.Abs(ChainInfo[0].y - ChainInfo[ChainNum].y);
+    public float StartToGoalDistance () {
+        if(ChainNum >= 1) {
+            return Vector2Int.Distance(ChainInfo[0],ChainInfo[ChainNum - 1]);
+        } else {
+            return 0;
+        }
     }
 
     //=============================================================
@@ -88,66 +92,8 @@ public class PanelManager : MonoBehaviour {
                 //親を設定
                 obj.transform.SetParent(this.transform,false);
 
-                /*switch(form) {
-                    case Form.L:
-                    if(TermsL(i - (int)(numX / 2),j - (int)(numY / 2))) {
-                        obj.GetComponent<Panel>().ChangeState(EState.on);
-                    }
-                    break;
-
-                    case Form.O:
-                    if(TermsO(i - (int)(numX / 2),j - (int)(numY / 2))) {
-                        obj.GetComponent<Panel>().ChangeState(EState.on);
-                    }
-                    break;
-                }*/
-
                 //Debug.Log(i + ":" + j);
             }
         }
-    }
-
-    //=============================================================
-    //L型の条件
-    private bool TermsL (int numX,int numY) {
-        if(numX == -1 && numY == 0) {
-            return true;
-        }
-
-        if(numX == -1 && numY == 1) {
-            return true;
-        }
-
-        if(numX == 0 && numY == 0) {
-            return true;
-        }
-
-        if(numX == 1 && numY == 0) {
-            return true;
-        }
-
-        return false;
-    }
-
-    //=============================================================
-    //O型の条件
-    private bool TermsO (int numX,int numY) {
-        if(numX == 0 && numY == 0) {
-            return true;
-        }
-
-        if(numX == 0 && numY == 1) {
-            return true;
-        }
-
-        if(numX == 1 && numY == 0) {
-            return true;
-        }
-
-        if(numX == 1 && numY == 1) {
-            return true;
-        }
-
-        return false;
     }
 }
