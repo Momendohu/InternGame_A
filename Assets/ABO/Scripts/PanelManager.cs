@@ -13,8 +13,9 @@ public class PanelManager : MonoBehaviour {
     private float panelGap = 0.015f; //パネル間のすきま
 
     //=============================================================
-    public enum EState { off = 0, on = 1 } //状態
-    public enum Form { L = 0, O = 1 } //形
+    public enum EState { None = -1, Off = 0, On = 1 } //状態
+    public enum Form { None = -1, L = 0, O = 1 } //形
+    public enum InstrumentType { None = -1, Piano = 0, Drum = 1 }//楽器タイプ
 
     //=============================================================
     private GameObject panel; //パネル
@@ -35,7 +36,7 @@ public class PanelManager : MonoBehaviour {
     }
 
     private void Start () {
-        CreatePanels(panelNumX,panelNumY,Form.O);
+        CreatePanels(panelNumX,panelNumY);
     }
 
     private void Update () {
@@ -46,7 +47,7 @@ public class PanelManager : MonoBehaviour {
     //パネルの生成
     //numX:横の数
     //numY:縦の数
-    private void CreatePanels (int numX,int numY,Form form) {
+    private void CreatePanels (int numX,int numY) {
         GameObject obj = null;
 
         for(int i = 0;i < numX;i++) {
@@ -54,7 +55,14 @@ public class PanelManager : MonoBehaviour {
                 obj = Instantiate(panel) as GameObject;
                 obj.transform.position = new Vector2((panelSize + panelGap) * (i - (int)(numX / 2)) + panelX,(panelSize + panelGap) * (j - (int)(numY / 2)) + panelY);
 
-                switch(form) {
+                //ランダムで楽器タイプを決定
+                if((float)Random.Range(0,2) >= 1) {
+                    obj.GetComponent<Panel>().ChangeInstrumentType(InstrumentType.Piano);
+                } else {
+                    obj.GetComponent<Panel>().ChangeInstrumentType(InstrumentType.Drum);
+                }
+
+                /*switch(form) {
                     case Form.L:
                     if(TermsL(i - (int)(numX / 2),j - (int)(numY / 2))) {
                         obj.GetComponent<Panel>().ChangeState(EState.on);
@@ -66,9 +74,9 @@ public class PanelManager : MonoBehaviour {
                         obj.GetComponent<Panel>().ChangeState(EState.on);
                     }
                     break;
-                }
+                }*/
 
-                Debug.Log(i + ":" + j);
+                //Debug.Log(i + ":" + j);
             }
         }
     }

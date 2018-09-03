@@ -43,8 +43,8 @@ public class Mouse : MonoBehaviour {
         {
             //配置ブロックの色を変える
             if(other.tag == "Panel") {
-                other.gameObject.GetComponent<Panel>().ChangeState(PanelManager.EState.on);
-                Debug.Log("当たった");
+                other.gameObject.GetComponent<Panel>().ChangeState(PanelManager.EState.On);
+                //Debug.Log("当たった");
                 //other.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             }
         }
