@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PanelManager : MonoBehaviour {
     //=============================================================
-    private int panelNumX = 11; //パネルの数
-    private int panelNumY = 11; //パネルの数
+    private int panelNumX = 7; //パネルの数
+    private int panelNumY = 7; //パネルの数
     private float panelX = 0; //パネルの位置
     private float panelY = 0; //パネルの位置
-    private float panelSize = 0.48f; //パネルのサイズ
+    private float panelSize = 0.75f; //パネルのサイズ
     private float panelGap = 0.015f; //パネル間のすきま
 
     //=============================================================
