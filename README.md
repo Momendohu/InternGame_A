@@ -7,9 +7,10 @@
   - Projection`Orthographic`
   - Size`5`
 - SortingLayer設定
-  - `Background`
-  - `Deck`
+  - `BackgroundUnder`
   - `Panel` 
+  - `BackgroundUpper`
+  - `Deck`
 - Canvas設定
   - ReferenceResolution`900x1600`
 
