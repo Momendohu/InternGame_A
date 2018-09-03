@@ -62,6 +62,9 @@ public class PanelManager : MonoBehaviour {
                     obj.GetComponent<Panel>().ChangeInstrumentType(InstrumentType.Drum);
                 }
 
+                //親を設定
+                obj.transform.SetParent(this.transform,false);
+
                 /*switch(form) {
                     case Form.L:
                     if(TermsL(i - (int)(numX / 2),j - (int)(numY / 2))) {
