@@ -78,7 +78,20 @@ public class Panel : MonoBehaviour {
     public void Touched (PanelManager.EState _state) {
         PanelManager p = transform.parent.GetComponent<PanelManager>();
         p.ChainInfo[p.ChainNum] = new Vector2Int(this.Px,this.Py); //座標を保存
-        p.ChainNum++; //保存を次に進める
+
+        if(p.ChainNum > 0) {
+            //横にフリック移動したなら
+            if(Mathf.Abs(p.ChainInfo[p.ChainNum].x - p.ChainInfo[p.ChainNum - 1].x) == 1) {
+                p.DirectionInfo[p.ChainNum] = (int)PanelManager.DirectionType.Horizontally;
+            }
+
+            //縦にフリック移動したなら
+            if(Mathf.Abs(p.ChainInfo[p.ChainNum].y - p.ChainInfo[p.ChainNum - 1].y) == 1) {
+                p.DirectionInfo[p.ChainNum] = (int)PanelManager.DirectionType.Vertically;
+            }
+        }
+
+        p.ChainNum++; //チェインを次に進める
 
         Debug.Log("px:" + this.Px + " py:" + this.Py + " next is " + p.ChainNum);
         this.ChangeState(_state);

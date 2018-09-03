@@ -17,13 +17,14 @@ public class PanelManager : MonoBehaviour {
     //=============================================================
     public Vector2Int[] ChainInfo; //チェインの座標
     public int ChainNum; //チェイン数
+
     public int[] DirectionInfo; //方向情報
 
     //=============================================================
     public enum EState { None = -1, Off = 0, On = 1 } //状態
     public enum Form { None = -1, L = 0, O = 1 } //形
     public enum InstrumentType { None = -1, Piano = 0, Drum = 1 } //楽器タイプ
-    public enum DirectionType { Vertically = 0, horizontally = 1 } //方向タイプ
+    public enum DirectionType { Vertically = 0, Horizontally = 1 } //方向タイプ
 
     //=============================================================
     private GameObject panel; //パネル
@@ -53,6 +54,12 @@ public class PanelManager : MonoBehaviour {
 
     private void Update () {
 
+    }
+
+    //=============================================================
+    //スタートからゴールの距離
+    public int StartToGoal () {
+        return Mathf.Abs(ChainInfo[0].x - ChainInfo[ChainNum].x) + Mathf.Abs(ChainInfo[0].y - ChainInfo[ChainNum].y);
     }
 
     //=============================================================
