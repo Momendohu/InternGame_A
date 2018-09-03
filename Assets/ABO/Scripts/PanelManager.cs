@@ -12,16 +12,18 @@ public class PanelManager : MonoBehaviour {
     private float panelSize = 0.75f; //パネルのサイズ
     private float panelGap = 0.015f; //パネル間のすきま
 
-    private int touchedPanelCoordinateNum; //タッチしているパネルの座標の保存しておく数
+    private int maxChainNum; //チェインの上限数
 
     //=============================================================
-    public Vector2[] TouchedPanelCoordinate; //タッチしているパネルの座標
-    public int TouchedPanelCoordinatePoint; //タッチしているパネルの座標の現在の参照先
+    public Vector2Int[] ChainInfo; //チェインの座標
+    public int ChainNum; //チェイン数
+    public int[] DirectionInfo; //方向情報
 
     //=============================================================
     public enum EState { None = -1, Off = 0, On = 1 } //状態
     public enum Form { None = -1, L = 0, O = 1 } //形
-    public enum InstrumentType { None = -1, Piano = 0, Drum = 1 }//楽器タイプ
+    public enum InstrumentType { None = -1, Piano = 0, Drum = 1 } //楽器タイプ
+    public enum DirectionType { Vertically = 0, horizontally = 1 } //方向タイプ
 
     //=============================================================
     private GameObject panel; //パネル
@@ -30,8 +32,9 @@ public class PanelManager : MonoBehaviour {
     private void Init () {
         CRef();
 
-        touchedPanelCoordinateNum = panelNumX * panelNumY;
-        TouchedPanelCoordinate = new Vector2[touchedPanelCoordinateNum];
+        maxChainNum = panelNumX * panelNumY;
+        ChainInfo = new Vector2Int[maxChainNum];
+        DirectionInfo = new int[maxChainNum - 1];
     }
 
     //=============================================================

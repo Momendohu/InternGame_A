@@ -13,8 +13,8 @@ public class Panel : MonoBehaviour {
     private readonly float inactiveAlpha = 0.2f; //アクティブじゃない状態(Off)の時の透明度
 
     //=============================================================
-    public float Px; //座標(形成立判定に使用)
-    public float Py; //座標(形成立判定に使用)
+    public int Px; //座標(形成立判定に使用)
+    public int Py; //座標(形成立判定に使用)
 
     //=============================================================
     private PanelManager.EState state = PanelManager.EState.Off; //状態
@@ -77,10 +77,10 @@ public class Panel : MonoBehaviour {
     //タッチされた時の処理
     public void Touched (PanelManager.EState _state) {
         PanelManager p = transform.parent.GetComponent<PanelManager>();
-        p.TouchedPanelCoordinate[p.TouchedPanelCoordinatePoint] = new Vector2(this.Px,this.Py); //座標を保存
-        p.TouchedPanelCoordinatePoint++; //保存を次に進める
+        p.ChainInfo[p.ChainNum] = new Vector2Int(this.Px,this.Py); //座標を保存
+        p.ChainNum++; //保存を次に進める
 
-        Debug.Log("px:" + this.Px + " py:" + this.Py + " next is " + p.TouchedPanelCoordinatePoint);
+        Debug.Log("px:" + this.Px + " py:" + this.Py + " next is " + p.ChainNum);
         this.ChangeState(_state);
     }
 
