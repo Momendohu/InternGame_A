@@ -114,10 +114,4 @@ public class Panel : MonoBehaviour {
     public void ChangeInstrumentType (PanelManager.InstrumentType _instrumentType) {
         instrumentType = _instrumentType;
     }
-
-    //=============================================================
-    //=============================================================
-    /*internal void ChangeState () {
-        throw new NotImplementedException();
-    }*/
 }

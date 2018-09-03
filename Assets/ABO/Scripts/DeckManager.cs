@@ -26,7 +26,6 @@ public class DeckManager : MonoBehaviour {
     }
 
     private void Update () {
-        Debug.Log(CheckL(panelManager.ChainNum,panelManager.StartToGoalDistance(),panelManager.DirectionInfo));
         if(CheckL(panelManager.ChainNum,panelManager.StartToGoalDistance(),panelManager.DirectionInfo) == 1) {
             Debug.Log("成立可能");
         }
