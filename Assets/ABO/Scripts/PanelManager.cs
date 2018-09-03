@@ -55,6 +55,10 @@ public class PanelManager : MonoBehaviour {
                 obj = Instantiate(panel) as GameObject;
                 obj.transform.position = new Vector2((panelSize + panelGap) * (i - (int)(numX / 2)) + panelX,(panelSize + panelGap) * (j - (int)(numY / 2)) + panelY);
 
+                //座標を設定
+                obj.GetComponent<Panel>().Px = i;
+                obj.GetComponent<Panel>().Py = j;
+
                 //ランダムで楽器タイプを決定
                 if((float)Random.Range(0,2) >= 1) {
                     obj.GetComponent<Panel>().ChangeInstrumentType(InstrumentType.Piano);

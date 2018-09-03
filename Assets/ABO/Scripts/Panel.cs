@@ -9,8 +9,12 @@ public class Panel : MonoBehaviour {
     private Color pianoColor = new Color(97f / 255f,195f / 255f,89f / 255f);
     private Color drumColor = new Color(255f / 255f,236f / 255f,185f / 255f);
 
-    private float activeAlpha = 1; //アクティブな状態(On)の時の透明度
-    private float inactiveAlpha = 0.2f; //アクティブじゃない状態(Off)の時の透明度
+    private readonly float activeAlpha = 1; //アクティブな状態(On)の時の透明度
+    private readonly float inactiveAlpha = 0.2f; //アクティブじゃない状態(Off)の時の透明度
+
+    //=============================================================
+    public float Px; //座標(形成立判定に使用)
+    public float Py; //座標(形成立判定に使用)
 
     //=============================================================
     private PanelManager.EState state = PanelManager.EState.Off; //状態
