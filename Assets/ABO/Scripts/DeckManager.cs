@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.UI;
 
-public class Deck : MonoBehaviour {
+public class DeckManager : MonoBehaviour {
 	//=============================================================
+	
 
 	//=============================================================
 	private void Init(){
