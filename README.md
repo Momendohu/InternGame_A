@@ -6,6 +6,8 @@
 - カメラ
   - Projection`Orthographic`
   - Size`5`
+- Tag設定
+  - `Panel`
 - SortingLayer設定
   - `BackgroundUnder`
   - `Panel` 
