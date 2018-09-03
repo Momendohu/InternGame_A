@@ -39,29 +39,11 @@ public class Mouse : MonoBehaviour {
     //--------------------------------------------------------
     void OnTriggerStay2D (Collider2D other) {
         // 左クリックonの時
-        //if(TapFlag)
-        {
+        if(TapFlag)
             //配置ブロックの色を変える
             if(other.tag == "Panel") {
                 other.gameObject.GetComponent<Panel>().ChangeState(PanelManager.EState.On);
-                //Debug.Log("当たった");
-                //other.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             }
-        }
     }
-
-    //void RayTest()
-    //{
-    //    Ray ray = new Ray(transform.position, new Vector3(0, -1, 0));
-    //    RaycastHit hit;
-    //    int distance = 10;
-    //    Debug.DrawLine(ray.origin, ray.direction * distance, Color.red);
-    //    if(Physics.Raycast(ray,out hit, distance))
-    //    {
-    //        if(hit.collider.tag == "Player")
-    //        {
-    //            Debug.Log("当たった");
-    //        }
-    //    }
-    //}
 }
+
