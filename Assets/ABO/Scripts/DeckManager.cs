@@ -8,7 +8,8 @@ public class DeckManager : MonoBehaviour {
     private PanelManager panelManager;
 
     //=============================================================
-    public enum FormState { NotMatch = 0, Matchable = 1, Match = 2 } //形の成立状態
+    public enum FormState { NotMatch = 0, Matchable = 1, Match = 2 } //型の成立状態
+    public enum FormType { None = -1, L = 0, O = 1 } //型タイプ
 
     //=============================================================
     private void Init () {
