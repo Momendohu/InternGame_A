@@ -54,6 +54,7 @@ public class DeckManager : MonoBehaviour {
     private int termsL_chainLength = 4;
     private float termsL_startToGoalDistance = Mathf.Sqrt(5);
 
+    //=============================================================
     //L型が成立するかどうか
     //0:未成立
     //1:成立する可能性あり
@@ -105,4 +106,6 @@ public class DeckManager : MonoBehaviour {
             return 0;
         }
     }
+
+    //=============================================================
 }
