@@ -22,7 +22,6 @@ public class PanelManager : MonoBehaviour {
 
     //=============================================================
     public enum EState { None = -1, Off = 0, On = 1 } //状態
-    public enum Form { None = -1, L = 0, O = 1 } //形
     public enum InstrumentType { None = -1, Piano = 0, Drum = 1 } //楽器タイプ
     public enum DirectionType { Vertically = 0, Horizontally = 1 } //方向タイプ
 
