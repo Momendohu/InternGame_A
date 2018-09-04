@@ -8,6 +8,9 @@ public class DeckManager : MonoBehaviour {
     private PanelManager panelManager;
 
     //=============================================================
+    public enum FormState { NotMatch = 0, Matchable = 1, Match = 2 } //状態
+
+    //=============================================================
     private void Init () {
         CRef();
     }
