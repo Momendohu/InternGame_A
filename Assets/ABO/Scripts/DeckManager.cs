@@ -4,12 +4,17 @@ using UnityEngine;
 //using UnityEngine.UI;
 
 public class DeckManager : MonoBehaviour {
+    private List<GameObject> decks = new List<GameObject>();
+
     //=============================================================
     private PanelManager panelManager;
 
     //=============================================================
     public enum FormState { NotMatch = 0, Matchable = 1, Match = 2 } //型の成立状態
     public enum FormType { None = -1, L = 0, O = 1 } //型タイプ
+
+    //=============================================================
+    private GameObject deck; //デッキのプレハブ
 
     //=============================================================
     private void Init () {
@@ -19,6 +24,7 @@ public class DeckManager : MonoBehaviour {
     //=============================================================
     private void CRef () {
         panelManager = GameObject.Find("PanelManager").GetComponent<PanelManager>();
+        deck = Resources.Load("Deck") as GameObject;
     }
 
     //=============================================================
@@ -27,6 +33,7 @@ public class DeckManager : MonoBehaviour {
     }
 
     private void Start () {
+        decks.Add(CreateDeck(new Vector2(0,-4.5f)));
     }
 
     private void Update () {
@@ -109,4 +116,16 @@ public class DeckManager : MonoBehaviour {
     }
 
     //=============================================================
+    //デッキの生成
+    private GameObject CreateDeck (Vector2 _position) {
+        GameObject obj = Instantiate(deck) as GameObject;
+
+        //位置を指定
+        obj.transform.position = _position;
+
+        //親を設定
+        obj.transform.SetParent(this.transform,false);
+
+        return obj;
+    }
 }

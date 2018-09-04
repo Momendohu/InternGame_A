@@ -9,6 +9,7 @@ public class Deck : MonoBehaviour {
     private Color matchColor = new Color(1,1,1,1);
 
     private DeckManager.FormState formState = DeckManager.FormState.NotMatch; //型の状態
+    private DeckManager.FormType formType = DeckManager.FormType.L; //型タイプ
 
     private Coroutine coroutine;
 

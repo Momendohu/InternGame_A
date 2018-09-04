@@ -26,7 +26,7 @@ public class PanelManager : MonoBehaviour {
     public enum DirectionType { Vertically = 0, Horizontally = 1 } //方向タイプ
 
     //=============================================================
-    private GameObject panel; //パネル
+    private GameObject panel; //パネルのプレハブ
 
     //=============================================================
     private void Init () {
