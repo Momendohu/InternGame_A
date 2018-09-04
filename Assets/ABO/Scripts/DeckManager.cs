@@ -14,7 +14,7 @@ public class DeckManager : MonoBehaviour {
     public enum FormType { None = -1, L = 0, O = 1 } //型タイプ
 
     //=============================================================
-    private GameObject deck; //デッキのプレハブ
+    private GameObject deckPrefab; //デッキのプレハブ
 
     //=============================================================
     private void Init () {
@@ -24,7 +24,7 @@ public class DeckManager : MonoBehaviour {
     //=============================================================
     private void CRef () {
         panelManager = GameObject.Find("PanelManager").GetComponent<PanelManager>();
-        deck = Resources.Load("Deck") as GameObject;
+        deckPrefab = Resources.Load("Deck") as GameObject;
     }
 
     //=============================================================
@@ -41,6 +41,7 @@ public class DeckManager : MonoBehaviour {
         switch(Check(panelManager.ChainNum,panelManager.StartToGoalDistance(),panelManager.DirectionInfo,termsL_directionInfo,termsL_chainLength,termsL_startToGoalDistance)) {
             case (int)FormState.NotMatch:
             Debug.Log("未成立");
+
             break;
 
             case (int)FormState.Matchable:
@@ -118,7 +119,7 @@ public class DeckManager : MonoBehaviour {
     //=============================================================
     //デッキの生成
     private GameObject CreateDeck (Vector2 _position) {
-        GameObject obj = Instantiate(deck) as GameObject;
+        GameObject obj = Instantiate(deckPrefab) as GameObject;
 
         //位置を指定
         obj.transform.position = _position;

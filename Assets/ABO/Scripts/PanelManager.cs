@@ -26,7 +26,7 @@ public class PanelManager : MonoBehaviour {
     public enum DirectionType { Vertically = 0, Horizontally = 1 } //方向タイプ
 
     //=============================================================
-    private GameObject panel; //パネルのプレハブ
+    private GameObject panelPrefab; //パネルのプレハブ
 
     //=============================================================
     private void Init () {
@@ -39,7 +39,7 @@ public class PanelManager : MonoBehaviour {
 
     //=============================================================
     private void CRef () {
-        panel = Resources.Load("Panel") as GameObject;
+        panelPrefab = Resources.Load("Panel") as GameObject;
     }
 
     //=============================================================
@@ -74,7 +74,7 @@ public class PanelManager : MonoBehaviour {
 
         for(int i = 0;i < numX;i++) {
             for(int j = 0;j < numY;j++) {
-                obj = Instantiate(panel) as GameObject;
+                obj = Instantiate(panelPrefab) as GameObject;
                 obj.transform.position = new Vector2((panelSize + panelGap) * (i - (int)(numX / 2)) + panelX,(panelSize + panelGap) * (j - (int)(numY / 2)) + panelY);
 
                 //座標を設定
