@@ -8,7 +8,7 @@ public class DeckManager : MonoBehaviour {
     private PanelManager panelManager;
 
     //=============================================================
-    public enum FormState { NotMatch = 0, Matchable = 1, Match = 2 } //状態
+    public enum FormState { NotMatch = 0, Matchable = 1, Match = 2 } //形の成立状態
 
     //=============================================================
     private void Init () {
@@ -29,18 +29,28 @@ public class DeckManager : MonoBehaviour {
     }
 
     private void Update () {
-        if(CheckL(panelManager.ChainNum,panelManager.StartToGoalDistance(),panelManager.DirectionInfo) == 1) {
-            Debug.Log("成立可能");
-        }
+        //L型での照合
+        switch(Check(panelManager.ChainNum,panelManager.StartToGoalDistance(),panelManager.DirectionInfo,termsL_directionInfo,termsL_chainLength,termsL_startToGoalDistance)) {
+            case (int)FormState.NotMatch:
+            Debug.Log("未成立");
+            break;
 
-        if(CheckL(panelManager.ChainNum,panelManager.StartToGoalDistance(),panelManager.DirectionInfo) == 2) {
+            case (int)FormState.Matchable:
+            Debug.Log("成立可能");
+            break;
+
+            case (int)FormState.Match:
             Debug.Log("成立!!");
+            break;
+
+            default:
+            break;
         }
     }
 
     //=============================================================
     //L型の条件(方向)
-    private int[,] termsL_DirectionInfo = { { 0,0,1 },{ 0,1,1 },{ 1,1,0 },{ 1,0,0 } };
+    private int[,] termsL_directionInfo = { { 0,0,1 },{ 0,1,1 },{ 1,1,0 },{ 1,0,0 } };
     private int termsL_chainLength = 4;
     private float termsL_startToGoalDistance = Mathf.Sqrt(5);
 
@@ -48,7 +58,9 @@ public class DeckManager : MonoBehaviour {
     //0:未成立
     //1:成立する可能性あり
     //2:成立
-    private int CheckL (int chainNum,float startToGoal,int[] directionInfo) {
+    //chainNum,startToGoal,directionInfo -> 照合対象
+    //terms_DirectionInfo,terms_chainLength,terms_startToDistance -> 照合条件
+    private int Check (int chainNum,float startToGoal,int[] directionInfo,int[,] terms_directionInfo,int terms_chainLength,float terms_startToGoalDistance) {
         bool matchedDirectionInfo = false;
         bool matchedLength = false;
         bool matchedStartToGoalDistance = false;
@@ -56,10 +68,10 @@ public class DeckManager : MonoBehaviour {
         //Debug.Log(chainNum + ":" + startToGoal + ":" + directionInfo + ":" + directionInfo.Length);
 
         //方向での照合
-        if((chainNum - 1) <= termsL_DirectionInfo.GetLength(1)) {
-            for(int j = 0;j < termsL_DirectionInfo.GetLength(0);j++) {
+        if((chainNum - 1) <= terms_directionInfo.GetLength(1)) {
+            for(int j = 0;j < terms_directionInfo.GetLength(0);j++) {
                 for(int i = 0;i < (chainNum - 1);i++) {
-                    if(termsL_DirectionInfo[j,i] != directionInfo[i]) {
+                    if(terms_directionInfo[j,i] != directionInfo[i]) {
                         break;
                     }
                     matchedDirectionInfo = true;
@@ -74,12 +86,12 @@ public class DeckManager : MonoBehaviour {
         }
 
         //チェインの長さでの照合
-        if(chainNum == termsL_chainLength) {
+        if(chainNum == terms_chainLength) {
             matchedLength = true;
         }
 
         //始点と終点間の長さでの照合
-        if(Mathf.Approximately(startToGoal,termsL_startToGoalDistance)) {
+        if(Mathf.Approximately(startToGoal,terms_startToGoalDistance)) {
             matchedStartToGoalDistance = true;
         }
 
