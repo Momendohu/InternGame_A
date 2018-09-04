@@ -41,15 +41,17 @@ public class DeckManager : MonoBehaviour {
         switch(Check(panelManager.ChainNum,panelManager.StartToGoalDistance(),panelManager.DirectionInfo,termsL_directionInfo,termsL_chainLength,termsL_startToGoalDistance)) {
             case (int)FormState.NotMatch:
             Debug.Log("未成立");
-
+            decks[0].GetComponent<Deck>().FormState = FormState.NotMatch; //暫定(拡張性ないからすぐ直す)
             break;
 
             case (int)FormState.Matchable:
             Debug.Log("成立可能");
+            decks[0].GetComponent<Deck>().FormState = FormState.Matchable; //暫定(拡張性ないからすぐ直す)
             break;
 
             case (int)FormState.Match:
             Debug.Log("成立!!");
+            decks[0].GetComponent<Deck>().FormState = FormState.Match; //暫定(拡張性ないからすぐ直す)
             break;
 
             default:

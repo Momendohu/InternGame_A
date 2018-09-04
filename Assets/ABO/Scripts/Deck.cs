@@ -8,13 +8,18 @@ public class Deck : MonoBehaviour {
     private Color notMatchColor = new Color(1,1,1,0.2f);
     private Color matchColor = new Color(1,1,1,1);
 
-    private DeckManager.FormState formState = DeckManager.FormState.NotMatch; //型の状態
-    private DeckManager.FormType formType = DeckManager.FormType.L; //型タイプ
-
     private Coroutine coroutine;
 
     //=============================================================
-    private SpriteRenderer spriteRenderer;
+    [System.NonSerialized]
+    public DeckManager.FormState FormState = DeckManager.FormState.NotMatch; //型の状態
+
+    [System.NonSerialized]
+    public DeckManager.FormType FormType = DeckManager.FormType.L; //型タイプ
+
+    //=============================================================
+    private SpriteRenderer image1;
+    private SpriteRenderer image2;
 
     //=============================================================
     private void Init () {
@@ -23,7 +28,8 @@ public class Deck : MonoBehaviour {
 
     //=============================================================
     private void CRef () {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        image1 = transform.Find("Image1").GetComponent<SpriteRenderer>();
+        image2 = transform.Find("Image2").GetComponent<SpriteRenderer>();
     }
 
     //=============================================================
@@ -36,13 +42,14 @@ public class Deck : MonoBehaviour {
     }
 
     private void Update () {
-        switch(formState) {
+        switch(FormState) {
             case DeckManager.FormState.NotMatch:
             if(coroutine != null) {
                 StopCoroutine(coroutine);
                 coroutine = null;
             }
-            spriteRenderer.color = notMatchColor;
+            image1.color = notMatchColor;
+            image2.color = notMatchColor;
             break;
 
             case DeckManager.FormState.Matchable:
@@ -56,7 +63,8 @@ public class Deck : MonoBehaviour {
                 StopCoroutine(coroutine);
                 coroutine = null;
             }
-            spriteRenderer.color = matchColor;
+            image1.color = matchColor;
+            image2.color = matchColor;
             break;
 
             default:
@@ -70,7 +78,8 @@ public class Deck : MonoBehaviour {
         float time = 0;
         while(true) {
             time += speed;
-            spriteRenderer.color = new Color(1,1,1,Mathf.Sin(Mathf.Deg2Rad * time));
+            image1.color = new Color(1,1,1,Mathf.Sin(Mathf.Deg2Rad * time));
+            image2.color = new Color(1,1,1,Mathf.Sin(Mathf.Deg2Rad * time));
             yield return null;
         }
     }
